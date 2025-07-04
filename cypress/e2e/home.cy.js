@@ -3,7 +3,7 @@ describe('Homepage Smoke Test', () => {
     cy.visit('/')
 
     // Check for app title or branding
-    cy.contains('One FM')  // Replace with your actual app name text
+    cy.contains('mobile_web_app')  // Replace with your actual app name text
 
     // Check for a common button like "Sign In" or "Login"
     cy.contains('Sign In')  // Or 'Login', 'Continue', etc.
