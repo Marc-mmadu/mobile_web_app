@@ -28,6 +28,11 @@ jobs:
     - name: Run Unit Tests (Vitest)
       run: yarn test:unit
 
+    # ✅ [NEW STEP ADDED HERE]
+    - name: Build the App (required before vite preview)
+      run: yarn build
+    # ⬆️ This was added to fix the Cypress E2E test failure due to missing build
+
     - name: Run Integration Tests (Cypress)
       run: yarn test:e2e
 
@@ -70,5 +75,3 @@ jobs:
         from: GitHub Actions <${{ secrets.EMAIL_USERNAME }}>
         body: |
           Deployment to staging failed during one of the CI/CD steps. Please check the workflow logs.
-
-          #nothing
