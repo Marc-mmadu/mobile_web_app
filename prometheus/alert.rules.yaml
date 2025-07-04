@@ -1,0 +1,11 @@
+groups:
+  - name: app-alerts
+    rules:
+      - alert: FrontendDown
+        expr: probe_success == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Vue frontend is down"
+          description: "The frontend app is not reachable via HTTP (probe failed)."
