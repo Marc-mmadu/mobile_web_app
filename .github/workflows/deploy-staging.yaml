@@ -31,7 +31,7 @@ jobs:
     # Build the apps before running Cypress
     - name: Build the App (required before vite preview)
       run: yarn build
-    # ⬆️ This was added to fix the Cypress E2E test failure due to missing build
+    # ⬆ A correction was added to fix the Cypress E2E test failure due to missing build
 
     - name: Run Integration Tests (Cypress)
       run: yarn test:e2e
