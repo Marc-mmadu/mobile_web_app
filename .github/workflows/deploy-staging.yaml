@@ -28,7 +28,7 @@ jobs:
     - name: Run Unit Tests (Vitest)
       run: yarn test:unit
 
-    # Build the app before running Cypress
+    # Build the apps before running Cypress
     - name: Build the App (required before vite preview)
       run: yarn build
     # ⬆️ This was added to fix the Cypress E2E test failure due to missing build
