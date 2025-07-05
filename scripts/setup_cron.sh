@@ -18,8 +18,8 @@ fi
 
 # === Define the cron job entries ===
 CRON_ENTRIES="
-0 2 * * * $PYTHON_BIN $BACKUP_SCRIPT >> $SCRIPT_DIR/backup.log 2>&1
-0 0 * * 0 $PYTHON_BIN $LOGROTATE_SCRIPT >> $SCRIPT_DIR/logrotate.log 2>&1
+* * * * * $PYTHON_BIN $BACKUP_SCRIPT >> $SCRIPT_DIR/backup.log 2>&1
+* * * * * $PYTHON_BIN $LOGROTATE_SCRIPT >> $SCRIPT_DIR/logrotate.log 2>&1
 "
 
 # === Install without duplicating ===
