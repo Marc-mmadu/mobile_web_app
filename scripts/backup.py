@@ -6,7 +6,7 @@ from datetime import datetime
 
 # CONFIGURABLE
 SOURCE_DIR = '/app/dist'  # or wherever the frontend is built
-BACKUP_DIR = '/opt/backups'
+BACKUP_DIR = '/home/mamahmarcus792/backups'
 
 def create_backup():
     if not os.path.exists(BACKUP_DIR):

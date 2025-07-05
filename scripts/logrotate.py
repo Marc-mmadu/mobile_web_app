@@ -5,7 +5,7 @@ import time
 from datetime import datetime, timedelta
 
 # CONFIGURABLE
-LOG_DIR = '/var/log/vue-frontend'  # or any log folder
+LOG_DIR = '/home/mamahmarcus792/mobile_web_app/logs'
 DAYS_TO_KEEP = 2
 
 def rotate_logs():
