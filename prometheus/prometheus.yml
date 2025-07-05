@@ -1,4 +1,4 @@
-cat <<EOF > ./prometheus/prometheus.yml
+cat > ./prometheus/prometheus.yml <<EOF
 global:
   scrape_interval: 15s
 
