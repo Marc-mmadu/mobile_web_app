@@ -1,29 +1,36 @@
 #!/usr/bin/env python3
 
 import os
-import time
-from datetime import datetime, timedelta
+import datetime
 
-# CONFIGURABLE
-LOG_DIR = '/home/mamahmarcus792/mobile_web_app/logs'
-DAYS_TO_KEEP = 2
+# ✅ Configurable paths
+LOG_DIR = '/home/mamahmarcus792/logs'
+ARCHIVE_DIR = os.path.join(LOG_DIR, "archived")
 
-def rotate_logs():
-    now = time.time()
-    cutoff = now - (DAYS_TO_KEEP * 86400)
+# Ensure directories exist
+os.makedirs(LOG_DIR, exist_ok=True)
+os.makedirs(ARCHIVE_DIR, exist_ok=True)
 
-    if not os.path.exists(LOG_DIR):
-        print(f"Log directory {LOG_DIR} does not exist.")
-        return
+print(f"🔁 Rotating logs in: {LOG_DIR}")
 
-    for root, _, files in os.walk(LOG_DIR):
-        for file in files:
-            file_path = os.path.join(root, file)
-            if os.path.isfile(file_path):
-                file_mtime = os.path.getmtime(file_path)
-                if file_mtime < cutoff:
-                    os.remove(file_path)
-                    print(f"Deleted old log: {file_path}")
+rotated = False
 
-if __name__ == "__main__":
-    rotate_logs()
+for filename in os.listdir(LOG_DIR):
+    if filename.endswith(".log"):
+        log_path = os.path.join(LOG_DIR, filename)
+
+        if os.path.isfile(log_path):
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            archive_name = f"{filename}.{timestamp}.gz"
+            archive_path = os.path.join(ARCHIVE_DIR, archive_name)
+
+            # Compress the log file
+            os.system(f"gzip -c {log_path} > {archive_path}")
+            # Clear original log file
+            open(log_path, 'w').close()
+
+            print(f"✅ Rotated: {filename} → {archive_name}")
+            rotated = True
+
+if not rotated:
+    print("⚠️ No .log files found to rotate.")

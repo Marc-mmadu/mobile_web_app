@@ -5,7 +5,7 @@ import tarfile
 from datetime import datetime
 
 # CONFIGURABLE
-SOURCE_DIR = '/app/dist'  # or wherever the frontend is built
+SOURCE_DIR = '/home/mamahmarcus792/mobile_web_app/src'  # or wherever the frontend is built
 BACKUP_DIR = '/home/mamahmarcus792/backups'
 
 def create_backup():
