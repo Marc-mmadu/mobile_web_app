@@ -45,6 +45,21 @@ jobs:
         script: |
           cd /home/${{ secrets.STAGING_USER }}/mobile_web_app
           git pull origin staging
+          
+          # 🔧 CORRECTION: Ensure prometheus directory and file exist
+          mkdir -p prometheus
+          if [ ! -f prometheus/prometheus.yml ]; then
+            echo "Creating default prometheus.yml"
+            cat > prometheus/prometheus.yml << 'EOF'
+          global:
+            scrape_interval: 15s
+          scrape_configs:
+            - job_name: 'prometheus'
+              static_configs:
+                - targets: ['localhost:9090']
+          EOF
+          fi
+          
           docker compose down
           docker compose up -d --build
 
