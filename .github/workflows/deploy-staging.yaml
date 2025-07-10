@@ -71,7 +71,7 @@ jobs:
         server_port: 587
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: "✅ MOBILE_WEB_APP: Deployment to Staging Successful"
+        subject: ✅ MOBILE_WEB_APP: Deployment to Staging Successful
         to: ${{ env.EMAIL_TO }}
         from: GitHub Actions <${{ secrets.EMAIL_USERNAME }}>
         body: |
